@@ -59,13 +59,6 @@
         </div>
     </div>
     <div class="form-group">
-        <label for="form-user-notes" class="col-sm-2 control-label">Additional Notes</label>
-        <div class="col-sm-10">
-            <p style="font-size: 90%; color: #606060;">Other information you feel the organizers should be aware of, such as any days you're not available</p>
-            <textarea id="form-user-notes" name="speaker_info" class="form-control" rows="5">{{ speaker_info | default('') }}</textarea>
-        </div>
-    </div>
-    <div class="form-group">
         <label for="form-transportation" class="col-sm-2 control-label">Airfare?</label>
         <div class="col-sm-10 checkbox">
             <input id="form-transportation" name="transportation" type="checkbox" value="1" class="checkbox" {% if transportation == '1' %}checked{% endif %}> I need help with flight cost.
@@ -75,6 +68,30 @@
         <label for="form-hotel" class="col-sm-2 control-label">Hotel?</label>
         <div class="col-sm-10 checkbox">
             <input id="form-hotel" name="hotel" type="checkbox" value="1" class="checkbox" {% if hotel == '1' %}checked{% endif %}> I need help with hotel cost.
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="form-speaker-directory" class="col-sm-2 control-label">UTOS Speaker Directory?</label>
+        <div class="col-sm-10 checkbox">
+            <input id="form-speaker-directory" name="speaker_directory" type="checkbox" value="1" class="checkbox" {% if speaker_directory == '1' %}checked{% endif %}> I would like my contact inoformation to be shared with user group leaders, who may contact me to request that I speak at their group.
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="form-max-presentations" class="col-sm-2 control-label">Max Presentations</label>
+        <div class="col-sm-10">
+            <select id="form-max-presentations" name="max_presentations">
+                <option value="1" {% if max_presentations == '1' %}selected {% endif %}>I am willing to give 1 presentation</option>
+                <option value="2" {% if max_presentations == '2' %}selected {% endif %}>I am willing to give up to 2 presentations</option>
+                <option value="3" {% if max_presentations == '3' %}selected {% endif %}>I am willing to give up to 3 presentations</option>
+                <option value="4" {% if max_presentations == '4' %}selected {% endif %}>I am willing to give up to 4 presentations</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="form-user-notes" class="col-sm-2 control-label">Additional Notes</label>
+        <div class="col-sm-10">
+            <p style="font-size: 90%; color: #606060;">Other information you feel the organizers should be aware of, such as any days you're not available</p>
+            <textarea id="form-user-notes" name="speaker_info" class="form-control" rows="5">{{ speaker_info | default('') }}</textarea>
         </div>
     </div>
     <div class="form-group">

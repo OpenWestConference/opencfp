@@ -18,7 +18,9 @@ class SignupForm extends Form
         'speaker_bio',
         'transportation',
         'hotel',
-        'speaker_photo'
+        'speaker_photo',
+        'max_presentations',
+        'speaker_directory',
     );
 
     /**

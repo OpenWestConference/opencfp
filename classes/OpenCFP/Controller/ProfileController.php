@@ -54,6 +54,8 @@ class ProfileController
             'airport' => $speaker_data['airport'],
             'transportation' => $speaker_data['transportation'],
             'hotel' => $speaker_data['hotel'],
+            'max_presentations' => $speaker_data['max_presentations'],
+            'speaker_directory' => $speaker_data['speaker_directory'],
             'id' => $user->getId(),
             'formAction' => '/profile/edit',
             'buttonInfo' => 'Update Profile',
@@ -89,6 +91,8 @@ class ProfileController
             'airport' => $req->get('airport'),
             'transportation' => $req->get('transportation'),
             'hotel' => $req->get('hotel'),
+            'max_presentations' => $req->get('max_presentations'),
+            'speaker_directory' => $req->get('speaker_directory'),
             'speaker_info' => $req->get('speaker_info') ?: null,
             'speaker_bio' => $req->get('speaker_bio') ?: null,
         );
@@ -143,6 +147,8 @@ class ProfileController
             $user->airport = $sanitized_data['airport'];
             $user->transportation = $sanitized_data['transportation'];
             $user->hotel = $sanitized_data['hotel'];
+            $user->max_presentations = $sanitized_data['max_presentations'];
+            $user->speaker_directory = $sanitized_data['speaker_directory'];
             $user->info = $sanitized_data['speaker_info'];
             $user->bio = $sanitized_data['speaker_bio'];
 
@@ -264,6 +270,8 @@ class ProfileController
         $user->airport = $sanitized_data['airport'];
         $user->transportation = $sanitized_data['transportation'];
         $user->hotel = $sanitized_data['hotel'];
+        $user->max_presentations = $sanitized_data['max_presentations'];
+        $user->speaker_directory = $sanitized_data['speaker_directory'];
         $user->info = $sanitized_data['speaker_info'];
         $user->bio = $sanitized_data['speaker_bio'];
 
