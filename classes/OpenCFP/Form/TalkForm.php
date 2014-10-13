@@ -140,18 +140,27 @@ class TalkForm extends Form
     public function validateCategory()
     {
         $validCategories = array(
-            'development',
-            'framework',
-            'database',
-            'testing',
-            'security',
-            'devops',
-            'api',
-            'javascript',
-            'uiux',
-            'other',
-            'continuousdelivery',
-            'ibmi'
+            'Architecture',
+            'Business',
+            'CMS',
+            'Community',
+            'Data',
+            'GeekLife',
+            'GoLang',
+            'Hardware',
+            'Java',
+            'Javascript',
+            'Mobile',
+            'Ops',
+            'OtherLang',
+            'Perl',
+            'PHP',
+            'Python',
+            'Ruby',
+            'Security',
+            'Tools',
+            'Web',
+            'UI/UX',
         );
 
         if (empty($this->_cleanData['category']) || !isset($this->_cleanData['category'])) {
