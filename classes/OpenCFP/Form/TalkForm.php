@@ -100,7 +100,8 @@ class TalkForm extends Form
     {
         $validTalkTypes = array(
             'regular',
-            'tutorial'
+            'tutorial',
+			'focus'
         );
 
         if (empty($this->_cleanData['type']) || !isset($this->_cleanData['type'])) {
