@@ -17,7 +17,7 @@ class TalkForm extends Form
         'desired',
         'slides',
         'other',
-        'sponsor',
+        'allow_video',
         'user_id'
     );
 
@@ -50,7 +50,7 @@ class TalkForm extends Form
             $this->validateDesired() &&
             $this->validateSlides() &&
             $this->validateOther() &&
-            $this->validateSponsor()
+            $this->validateAllowVideo()
         );
     }
 
@@ -159,6 +159,7 @@ class TalkForm extends Form
             'Python',
             'Ruby',
             'Security',
+            'SEO',
             'Tools',
             'Web',
             'UI/UX',
@@ -192,7 +193,7 @@ class TalkForm extends Form
         return true;
     }
 
-    public function validateSponsor()
+    public function validateAllowVideo()
     {
         return true;
     }

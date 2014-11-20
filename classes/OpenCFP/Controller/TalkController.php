@@ -139,7 +139,7 @@ class TalkController
             'desired' => $talk_info['desired'],
             'slides' => $talk_info['slides'],
             'other' => $talk_info['other'],
-            'sponsor' => $talk_info['sponsor'],
+            'allow_video' => $talk_info['allow_video'],
             'buttonInfo' => 'Update my talk!',
         );
 
@@ -183,7 +183,7 @@ class TalkController
             'desired' => $req->get('desired'),
             'slides' => $req->get('slides'),
             'other' => $req->get('other'),
-            'sponsor' => $req->get('sponsor'),
+            'allow_video' => $req->get('allow_video'),
             'buttonInfo' => 'Submit my talk!',
         );
 
@@ -225,7 +225,7 @@ class TalkController
             'desired' => $req->get('desired'),
             'slides' => $req->get('slides'),
             'other' => $req->get('other'),
-            'sponsor' => $req->get('sponsor'),
+            'allow_video' => $req->get('allow_video'),
             'user_id' => $req->get('user_id')
         );
 
@@ -244,7 +244,7 @@ class TalkController
                 'desired' => $sanitized_data['desired'],
                 'slides' => $sanitized_data['slides'],
                 'other' => $sanitized_data['other'],
-                'sponsor' => $sanitized_data['sponsor'],
+                'allow_video' => $sanitized_data['allow_video'],
                 'user_id' => (int)$user->getId(),
             );
 
@@ -275,7 +275,7 @@ class TalkController
                 'desired' => $req->get('desired'),
                 'slides' => $req->get('slides'),
                 'other' => $req->get('other'),
-                'sponsor' => $req->get('sponsor'),
+                'allow_video' => $req->get('allow_video'),
                 'buttonInfo' => 'Submit my talk!',
             );
 
@@ -308,7 +308,7 @@ class TalkController
             'desired' => $req->get('desired'),
             'slides' => $req->get('slides'),
             'other' => $req->get('other'),
-            'sponsor' => $req->get('sponsor'),
+            'allow_video' => $req->get('allow_video'),
             'user_id' => $req->get('user_id')
         );
 
@@ -328,7 +328,7 @@ class TalkController
                 'desired' => $sanitized_data['desired'],
                 'slides' => $sanitized_data['slides'],
                 'other' => $sanitized_data['other'],
-                'sponsor' => $sanitized_data['sponsor'],
+                'allow_video' => $sanitized_data['allow_video'],
                 'user_id' => (int)$user->getId()
             );
 
@@ -363,7 +363,7 @@ class TalkController
                 'desired' => $req->get('desired'),
                 'slides' => $req->get('slides'),
                 'other' => $req->get('other'),
-                'sponsor' => $req->get('sponsor'),
+                'allow_video' => $req->get('allow_video'),
                 'buttonInfo' => 'Update my talk!',
             );
 

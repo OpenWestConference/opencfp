@@ -56,6 +56,8 @@ class ProfileController
             'hotel' => $speaker_data['hotel'],
             'max_presentations' => $speaker_data['max_presentations'],
             'speaker_directory' => $speaker_data['speaker_directory'],
+			'sponsor' => $speaker_data['sponsor'],
+			'request_mentor' => $speaker_data['request_mentor'],
             'id' => $user->getId(),
             'formAction' => '/profile/edit',
             'buttonInfo' => 'Update Profile',
@@ -93,6 +95,8 @@ class ProfileController
             'hotel' => $req->get('hotel'),
             'max_presentations' => $req->get('max_presentations'),
             'speaker_directory' => $req->get('speaker_directory'),
+            'sponsor' => $req->get('sponsor'),
+            'request_mentor' => $req->get('request_mentor'),
             'speaker_info' => $req->get('speaker_info') ?: null,
             'speaker_bio' => $req->get('speaker_bio') ?: null,
         );
@@ -149,6 +153,8 @@ class ProfileController
             $user->hotel = $sanitized_data['hotel'];
             $user->max_presentations = $sanitized_data['max_presentations'];
             $user->speaker_directory = $sanitized_data['speaker_directory'];
+            $user->sponsor = $sanitized_data['sponsor'];
+            $user->request_mentor = $sanitized_data['request_mentor'];
             $user->info = $sanitized_data['speaker_info'];
             $user->bio = $sanitized_data['speaker_bio'];
 
@@ -272,6 +278,8 @@ class ProfileController
         $user->hotel = $sanitized_data['hotel'];
         $user->max_presentations = $sanitized_data['max_presentations'];
         $user->speaker_directory = $sanitized_data['speaker_directory'];
+        $user->sponsor = $sanitized_data['sponsor'];
+        $user->request_mentor = $sanitized_data['request_mentor'];
         $user->info = $sanitized_data['speaker_info'];
         $user->bio = $sanitized_data['speaker_bio'];
 

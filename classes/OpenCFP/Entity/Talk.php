@@ -20,7 +20,7 @@ class Talk extends \Spot\Entity
             'desired' => ['type' => 'smallint', 'value' => 0],
             'slides' => ['type' => 'string', 'length' => 255],
             'other' => ['type' => 'text'],
-            'sponsor' => ['type' => 'smallint', 'value' => 0],
+            'allow_video' => ['type' => 'smallint', 'value' => 0],
             'favorite' => ['type' => 'smallint', 'value' => 0],
             'selected' => ['type' => 'smallint', 'value' => 0],
             'created_at' => ['type' => 'datetime', 'value' => new \DateTime()],

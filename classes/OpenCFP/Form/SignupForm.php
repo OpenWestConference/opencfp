@@ -21,6 +21,8 @@ class SignupForm extends Form
         'speaker_photo',
         'max_presentations',
         'speaker_directory',
+		'sponsor',
+		'request_mentor',
     );
 
     /**

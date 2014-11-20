@@ -33,6 +33,8 @@ class User extends \Spot\Entity
             'photo_path' => ['type' => 'string', 'length' => 255],
 			'max_presentations' => ['type' => 'smallint', 'value' => 2],
 			'speaker_directory' => ['type' => 'smallint', 'value' => 1],
+			'sponsor' => ['type' => 'smallint', 'value' => 1],
+			'request_mentor' => ['type' => 'smallint', 'value' => 1],
         ];
     }
 
