@@ -23,8 +23,11 @@
         <p>{{ speaker.info|raw }}</p>
 
         <h3>Other Information</h3>
+        <strong>Max Presentations:</strong> {{ speaker.max_presentations }}<br />
         <strong>Need Transportation:</strong> {% if speaker.transportation == '1' %} Yes {% else %} No {% endif %}<br />
-        <strong>Need Hotel:</strong> {% if speaker.hotel == '1' %} Yes {% else %} No {% endif %}
+        <strong>Need Hotel:</strong> {% if speaker.hotel == '1' %} Yes {% else %} No {% endif %}<br />
+        <strong>Request Mentorship:</strong> {% if speaker.request_mentor == '1' %} Yes {% else %} No {% endif %}<br />
+        <strong>Sponsor Opportunity:</strong> {% if speaker.sponsor == '1' %} Yes {% else %} No {% endif %}<br />
 
         {% if talks | length > 0 %}
             <h3>Talk Submissions</h3>
