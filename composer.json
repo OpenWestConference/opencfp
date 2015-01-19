@@ -4,38 +4,46 @@
         "php": ">=5.4",
         "twig/twig": "1.*",
         "pagerfanta/pagerfanta": "1.0.*@dev",
-        "cartalyst/sentry": "2.0.*@dev",
+        "cartalyst/sentry": "2.1.*",
         "ircmaxell/password-compat": "1.0.*@dev",
         "illuminate/database": "4.0.*@dev",
         "illuminate/events": "4.0.*@dev",
         "illuminate/container": "4.0.*@dev",
         "illuminate/support": "4.0.*@dev",
-        "chh/optparse": "*@dev",
         "ezyang/htmlpurifier": "dev-master",
         "swiftmailer/swiftmailer": "5.0",
         "pimple/pimple": "1.*",
         "silex/silex": "1.*",
         "symfony/form": "~2.3",
         "symfony/validator": "~2.3",
-        "symfony/config": "dev-master",
+        "symfony/config": "~2.3",
         "symfony/translation": "~2.3",
         "symfony/twig-bridge": "~2.3",
         "symfony/locale": "~2.3",
+        "symfony/console": "~2.3",
         "doctrine/dbal": "~2.3",
         "symfony/browser-kit": "~2.3",
         "symfony/css-selector": "~2.3",
         "intervention/image": "1.5.*",
         "robmorgan/phinx": "*",
-        "vlucas/spot2": "dev-master"
+        "vlucas/spot2": "dev-master",
+        "kzykhys/ciconia": "~1.0",
+        "aptoma/twig-markdown": "0.2.*",
+        "igorw/config-service-provider": "~1.2",
+        "symfony/yaml": "~2.5"
     },
     "autoload": {
         "psr-0": {"OpenCFP": "classes/"}
     },
     "require-dev": {
-        "fzaninotto/faker": "1.2.*",
         "phpunit/phpunit": "3.7.*",
+        "phpunit/dbunit": "1.3.*@dev",
         "mockery/mockery": "dev-master@dev",
-        "codeclimate/php-test-reporter": "dev-master",
-	"phpunit/dbunit": "1.3.*@dev"
+        "behat/behat": "~3.0,>=3.0.5",
+        "behat/mink-extension": "~2.0@dev",
+        "behat/mink-selenium2-driver": "*",
+        "behat/mink-goutte-driver": "*",
+        "fzaninotto/faker": "1.2.*",
+        "codeclimate/php-test-reporter": "dev-master"
     }
 }

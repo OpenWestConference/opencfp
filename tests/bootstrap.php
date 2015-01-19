@@ -1,11 +1,7 @@
 <?php
 
-// Grab our autoloader
-require './vendor/autoload.php';
+require('vendor/autoload.php');
 
-// Load out mock for tests that use PDO
-require './tests/PDOMock.php';
-
-// Initialize Twig
-$loader = new Twig_Loader_Filesystem('./templates');
-$twig = new Twig_Environment($loader);
+if (!defined('BASE_PATH')) {
+    define('BASE_PATH', dirname(__DIR__));
+}

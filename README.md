@@ -1,116 +1,228 @@
+# [![OpenCFP Banner](docs/img/banner.png)](https://github.com/chartjes/opencfp)
+
+OpenCFP is a PHP-based conference talk submission system.
+
+---
 [![Build Status](https://travis-ci.org/chartjes/opencfp.svg?branch=master)](https://travis-ci.org/chartjes/opencfp)
 [![Code Climate](https://codeclimate.com/github/chartjes/opencfp/badges/gpa.svg)](https://codeclimate.com/github/chartjes/opencfp)
 [![Test Coverage](https://codeclimate.com/github/chartjes/opencfp/badges/coverage.svg)](https://codeclimate.com/github/chartjes/opencfp)
-opencfp
-=======
 
-Repo for OpenCFP project, a PHP-based conference talk submission system
+## README Contents
 
-Contributing
-------------
+ * [Features](#features)
+ * [Screenshots](#screenshots)
+ * [Contributing](#contributing)
+ * [Requirements](#requirements)
+ * [Installation](#installation)
+   * [Cloning the Repository](#cloning-the-repository)
+   * [Installing Composer Dependencies](#installing-composer-dependencies)
+   * [Create a Database](#create-a-database)
+   * [Specify Environment](#specify-environment)
+   * [Configure Environment](#configure-environment)
+   * [Run Migrations](#run-migrations)
+   * [Final Touches](#final-touches)
+ * [Command-line Utilities](#command-line-utilities)
+   * [Admin Group Management](#admin-group-management)
+   * [Clear Caches](#clear-caches)
+ * [Testing](#testing)
+ * [Troubleshooting](#troubleshooting)
 
-We welcome and love contributions! To facilitate this we encourage you to create 
-a new personal branch after you fork this repo, for content and changes specific to your event. 
-However, anything you are willing to push back should be updated in the master branch. This will
-help keep the master branch generic for future event organizers. You would then be able to 
-merge master to your private branch and get updates when desired.
+<a name="features" />
+## Features
 
-Requirements
-------------
+ * Speaker registration system that gathers contact information.
+ * Dashboard that allows speakers to submit talk proposals and manage their profile.
+ * Administrative dashboard for reviewing submitted talks and making selections.
+ * Command-line utilities for administering the system.
+ * JSON-API for selected use-cases. (Coming Soon!)
 
-Please see the [composer.json](composer.json) file.
-You may need to install php5-intl extension for PHP. (on Ubuntu, not sure what it is called for other OS)
-Also, must have PHP 5.4+.
-Requires apache 2+ with mod_rewrite enabled and "AllowOverride all" directive in your <Directory> block.
+<a name="screenshots" />
+## Screenshots
+![Front page](http://i.imgur.com/GDhX1lD.png)
+![Login screen](http://i.imgur.com/VfNNch9.png)
+![Speaker page](http://i.imgur.com/uw1qmbS.png)
+![Talk page](http://i.imgur.com/pSreRoM.png)
+![Admin area](http://i.imgur.com/1Vmnwbv.png)
+![Admin talk review](http://i.imgur.com/3IRXDMg.png)
+![Admin speaker details](http://i.imgur.com/3oSXzGQ.png)
+![Admin talks dashboard](http://i.imgur.com/6Uu0OZu.png)
 
-Installation
-------------
+<a name="contributing" />
+## Contributing
 
-### Main Setup
+We welcome and love contributions! To facilitate receiving updates to OpenCFP, we encourage you to create a new
+personal branch after you fork this repository. This branch should be used for content and changes that are specific
+to your event. However, anything you are willing to push back should be updated in your master branch. This will help
+keep the master branch generic for future event organizers that choose to use the system. You would then be able to
+merge master to your private branch and get updates when desired!
 
-#### Clone project
+<a name="requirements" />
+## Requirements
 
-1. Clone this project into your working directory.
+ * PHP 5.4+
+ * Apache 2+ with `mod_rewrite` enabled and an `AllowOverride all` directive in your `<Directory>` block.
+ * Composer requirements are listed in [composer.json](composer.json).
+ * You may need to install `php5-intl` extension for PHP. (`php-intl` on CentOS/RHEL-based distributions)
 
-#### Use Composer to get dependencies
+<a name="installation" />
+## Installation
 
-2. Now tell composer to download dependencies by running the command:
-NOTE: May need to download composer.phar first from http://getcomposer.org
+<a name="cloning-the-repository" />
+### Cloning the Repository
 
-    ```bash
-    $ php composer.phar install
-    ```
-3. Set up your desired webserver to point to the '/web' directory.
+Clone this project into your working directory.
 
-4. Create database along with user/password in MySQL for application to use.
+Example:
 
-5. Rename the /config/config.development.ini.dist file to /config/config.development.ini.
+```
+$ git clone git@github.com:chartjes/opencfp.git
+Cloning into 'opencfp'...
+remote: Counting objects: 4794, done.
+remote: Total 4794 (delta 0), reused 0 (delta 0)
+Receiving objects: 100% (4794/4794), 1.59 MiB | 10.37 MiB/s, done.
+Resolving deltas: 100% (2314/2314), done.
+Checking connectivity... done.
+```
 
-    ```bash
-    $ mv /config/config.development.ini.dist /config/config.development.ini
-    $ mv /config/config.production.ini.dist /config/config.production.ini
-    ```
-NOTE: Use development or production naming as appropriate.
+<a name="installing-composer-dependencies" />
+### Installing Composer Dependencies
 
-6. Customize /config/config.development.ini as needed for your environment and site settings.
+From the project directory, run the following command. You may need to download `composer.phar` first from http://getcomposer.org
 
-    NOTE: The enddate will be observed. The app now locks at 11:59pm on the given enddate.
+```bash
+$ php composer.phar install
+```
 
-7. Alter the /classes/OpenCFP/Bootstrap.php file with the desired $environment. Lines 11 and 12.
+<a name="specify-web-server-document-root" />
+### Specify Web Server Document Root
 
-8. Populate MySQL database by using the `schema.sql` script available in '/migrations' folder.
+Set up your desired webserver to point to the `/web` directory.
 
-    ```bash
-    $ mysql -h HOST -u USER_NAME -p DATABASE_NAME < /migrations/schema.sql
-    ```
+Apache 2+ Example:
 
-9. May need to edit directory permissions for some of the vendor packages. (your mileage may vary)
+```
+<VirtualHost *:80>
+    DocumentRoot /path/to/web
+    ServerName cfp.conference.com
 
-    NOTE: If you are enabling template / htmlpurifier caching, you should create a directory with appropriate file
-    permissions and configure accordingly in your `config.*.ini`.
+    # Other Directives Here
+</VirtualHost>
+```
 
-10. Update directory permissions to allow for headshot upload.
+<a name="create-a-database" />
+### Create a Database
 
-    /web/uploads - needs to be writable by the web server
+Create a new database for the application to use. You will need to have the following handy to continue configuring
+your installation of OpenCFP:
 
-11. May need to alter the memory limit of your web server to allow image manipulation of headshots.
+ * Database server hostname
+ * Database name
+ * Credentials to an account that can access the above database
 
-    NOTE: This is largely dictated by the size of the images people upload. Typically 512M works.
-    If you find that 'speakers' table is not being populated, this may be why.
+<a name="specify-environment" />
+### Specify Environment
 
-12. Customize templates and /web/assets/css/site.css to your hearts content.
+OpenCFP can be configured to run in multiple environments. The application environment (`CFP_ENV`) must be specified
+as an environment variable. If not specified, the default is `development`.
 
-13. Enjoy!!!
+Add the following to the Apache `.htaccess` file at `/web/.htaccess` to specify a new environment variable.
 
+```
+SetEnv CFP_ENV production
+```
 
-Additional Admin Setup
-----------------------
+<a name="configure-environment" />
+### Configure Environment
 
-1. There is also a script available in /tools directory (to be called via command line) To enable a user to become an Admin.  So via CLI from within the /tools directory.
+Depending on which environment you specified above, you will need to make a copy of the distributed configuration
+schema to enter your own details into.
 
-    ```bash
-    $ php create_admin_user.php --update {email-address}
-    ```
-This will enable specified user to navigate to /admin through a link now visible on the Dashboard.
+For example, if you specified `SetEnv CFP_ENV production`:
 
+```bash
+$ cp config/production.dist.yml config/production.yml
+```
 
-Migrations
-----------
+After making a local copy, edit `config/production.yml` and specify your own details. Here are some important options
+to consider:
 
-This project uses [Phinx](http://phinx.org) to handle migrations. Be sure to edit the phinx.yml file that is in the root directory for the project to match your own
-database settings.
+| Option                | Description                       |
+|:----------------------|:----------------------------------|
+| `application.enddate` | This is the date your call for proposals would end on. |
+| `secure_ssl`          | This should be enabled, if possible. Requires a valid SSL certificate. |
+| `database.*`          | This is the database information you collected above. |
+| `mail.*`              | This is SMTP configuration for sending mail. The application sends notifications on various system events. |
 
-To run migrations, make sure you are in the root directory for the project and then execute the following:
+<a name="run-migrations" />
+### Run Migrations
 
-    ```bash
-    $ ./vendor/bin/phinx migrate
-    ```
+This project uses [Phinx](http://phinx.org) to handle migrations. Be sure to copy the `phinx.yml.dist` file that is in the
+root directory for the project to `phinx.yml` and edit it to match your own database settings.
 
-This will run through existing migrations in the /migrations directory, applying any that have not yet been done.
+To run migrations, make sure you are in the root directory for the project and run the following:
 
-Testing
--------
+```
+$ vendor/bin/phinx migrate --environment=production
+```
+
+<a name="final-touches" />
+### Final Touches
+
+ * The web server must be able to write to the `/web/uploads` directory in order to
+ * You may need to alter the `memory_limit` of the web server to allow image processing of head-shots. This is largely
+   dictated by the size of the images people upload. Typically 512M works.
+ * Customize templates and `/web/assets/css/site.css` to your heart's content.
+
+<a name="command-line-utilities" />
+## Command-line Utilities
+
+OpenCFP comes bundled with a few command-line utilities to administer the system. A full list of commands (along with help for each)
+can be found by running the following in the project root:
+
+```
+$ bin/opencfp
+```
+
+<a name="admin-group-management" />
+### Admin Group Management
+
+Administrators are authorized to review speaker information in addition to specifying talk favorites and making selections.
+
+Adding `speaker@opencfp.org` to the admin group:
+
+```
+$ bin/opencfp admin:promote --env=production speaker@opencfp.org
+```
+
+Removing `speaker@opencfp.org` from the admin group:
+
+```
+$ bin/opencfp admin:demote --env=production speaker@opencfp.org
+```
+
+<a name="clear-caches" />
+### Clear Caches
+
+OpenCFP uses Twig as a templating engine and HTML Purifier for input filtering. Both of these packages maintain a cache,
+if enabled. If you need to clear all application caches:
+
+```
+$ bin/opencfp cache:clear
+```
+
+<a name="testing" />
+## Testing
 
 There is a test suite that uses PHPUnit in the /tests directory. The recommended way to run the tests is:
 
-    $ ./vendor/bin/phpunit -c tests/phpunit.xml
+```
+$ ./vendor/bin/phpunit -c tests/phpunit.xml
+```
+
+<a name="troubleshooting" />
+## Troubleshooting
+
+**I'm getting weird permissions-related errors to do with HTML Purifier.**
+
+You may need to edit directory permissions for some vendor packages such as HTML Purifier. Check the `/cache` directory's
+permissions first (if you have `cache.enabled` set to `true`).

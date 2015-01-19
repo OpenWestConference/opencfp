@@ -1,4 +1,4 @@
-<form action="{{ site.url }}{{ formAction }}" method="POST" class="form-horizontal">
+<form action="{{ formAction }}" method="POST" class="form-horizontal">
     {% if id is defined %}
         <input name="id" type="hidden" value="{{ id }}">
     {% endif %}
@@ -12,6 +12,7 @@
         <label for="form-talk-description" class="col-sm-2 control-label">Description/Abstract</label>
         <div class="col-sm-10">
             <textarea id="form-talk-description" name="description" class="form-control" placeholder="Give a description of your talk (Abstract)" rows="10">{{ description }}</textarea>
+            <p class="help-block">Speaker abstract can be written using <a href="http://daringfireball.net/projects/markdown/basics" target="_blank">markdown</a> to support links</p>
         </div>
     </div>
     <div class="form-group">
@@ -23,7 +24,8 @@
     <div class="form-group">
         <label for="form-talk-type" class="col-sm-2 control-label">Talk Type</label>
         <div class="col-sm-10">
-            <select id="form-talk-type" name="type">
+<<<<<<< HEAD
+            <select id="form-talk-type" name="type" class="form-control">
                 <option value="regular" {% if type == 'regular' %}selected {% endif %}>Regular (50-min)</option>
                 <option value="focus" {% if type == 'focus' %}selected {% endif %}>Focus Group (50-min)</option>
                 <option value="tutorial" {% if type == 'tutorial' %}selected {% endif %}>Tutorial (3-hr)</option>
@@ -33,7 +35,7 @@
     <div class="form-group">
         <label for="form-talk-category" class="col-sm-2 control-label">Talk Category</label>
         <div class="col-sm-10">
-            <select id="form-talk-category" name="category">
+            <select id="form-talk-category" name="category" class="form-control">
                 <option value="Architecture" {% if category == "Architecture" %}selected {% endif %}>Architecture</option>
                 <option value="Business" {% if category == "Business" %}selected {% endif %}>Business</option>
                 <option value="CMS" {% if category == "CMS" %}selected {% endif %}>CMS</option>
@@ -62,7 +64,7 @@
     <div class="form-group">
         <label for="form-talk-level" class="col-sm-2 control-label">Talk Level</label>
         <div class="col-sm-10">
-            <select id="form-talk-level" name="level">
+            <select id="form-talk-level" name="level" class="form-control">
                 <option value="entry" {% if level == 'entry' %}selected {% endif %}>Beginner</option>
                 <option value="mid" {% if level == 'mid' %}selected {% endif %}>Intermediate</option>
                 <option value="advanced" {% if level == 'advanced' %}selected {% endif %}>Advanced</option>
@@ -73,18 +75,27 @@
         <label for="form-talk-other" class="col-sm-2 control-label">Additional Talk Information</label>
         <div class="col-sm-10">
             <textarea id="form-talk-other" name="other" class="form-control" placeholder="Other Considerations, such as Joind.In, Lanyrd, local user group, etc." rows="10">{{ other }}</textarea>
+            <p class="help-block">Talk additional information can be written using <a href="http://daringfireball.net/projects/markdown/basics" target="_blank">markdown</a> to support links</p>
         </div>
     </div>
     <div class="form-group">
         <label for="form-desired" class="col-sm-2 control-label">Most Desired</label>
         <div class="col-sm-10 checkbox">
-            <input id="form-desired" name="desired" type="checkbox" value="1" class="checkbox" {% if desired == '1' %}checked{% endif %} /> Of your submissions, is this your best?
+            <div class="checkbox">
+                <label for="form-desired">
+                    <input id="form-desired" name="desired" type="checkbox" value="1" {% if desired == '1' %}checked{% endif %}> Of your submissions, is this your best?
+                </label>
+            </div>
         </div>
     </div>
     <div class="form-group">
         <label for="form-allow-video" class="col-sm-2 control-label">Allow Video Recording?</label>
         <div class="col-sm-10 checkbox">
-            <input id="form-allow-video" name="allow_video" type="checkbox" value="1" class="checkbox" {% if allow_video == '1' %}checked{% endif %} /> I grant permission to the Utah Open Source Foundation to video record and publish this presentation
+            <div class="bheckbox">
+                <label for="form-allow-video">
+                    <input id="form-allow-video" name="allow_video" type="checkbox" value="1" class="checkbox" {% if allow_video == '1' %}checked{% endif %} /> I grant permission to the Utah Open Source Foundation to video record and publish this presentation
+                </label>
+            </div>
         </div>
     </div>
     <div class="form-group">
