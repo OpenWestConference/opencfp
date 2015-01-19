@@ -2,7 +2,7 @@
 
 use Phinx\Migration\AbstractMigration;
 
-class AddMaxPresentationsAndSpeakerDirectoryFields extends AbstractMigration
+class AddMaxPresoAndSpeakerDir extends AbstractMigration
 {
     public function change()
     {
