@@ -164,6 +164,7 @@ class TalkForm extends Form
             'Perl',
             'PHP',
             'Python',
+			'QA',
             'Ruby',
             'Security',
             'SEO',
