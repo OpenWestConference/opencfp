@@ -46,7 +46,7 @@ class TalkController extends BaseController
 
         $user = $this->app['sentry']->getUser();
 
-        if ($talk_info['user_id'] !== $user->getId()) {
+        if ($talk_info->user_id != $user->getId()) {
             return $this->redirectTo('dashboard');
         }
 
