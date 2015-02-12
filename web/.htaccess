@@ -4,7 +4,7 @@
     RewriteEngine On
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [QSA,L]
-	SetEnv CFP_ENV production
-	php_value display_errors stderr
 </IfModule>
+
+php_value display_errors stderr
 

@@ -30,6 +30,10 @@ class SignupController extends BaseController
         return $this->render('user/create.twig', [
             'transportation' => 0,
             'hotel' => 0,
+			'sponsor' => 0,
+			'speaker_directory' => 0,
+			'request_mentor' => 0,
+			'max_presentations' => 2,
             'formAction' => $this->url('user_create'),
             'buttonInfo' => 'Create my speaker profile'
         ]);
@@ -53,6 +57,10 @@ class SignupController extends BaseController
         $form_data['speaker_bio'] = $req->get('speaker_bio') ?: null;
         $form_data['transportation'] = $req->get('transportation') ?: null;
         $form_data['hotel'] = $req->get('hotel') ?: null;
+        $form_data['sponsor'] = $req->get('hotel') ?: null;
+        $form_data['speaker_directory'] = $req->get('speaker_directory') ?: null;
+        $form_data['request_mentor'] = $req->get('request_mentor') ?: null;
+        $form_data['max_presentations'] = $req->get('max_presentations') ?: null;
         $form_data['speaker_photo'] = null;
 
         if ($req->files->get('speaker_photo') !== null) {
@@ -106,6 +114,10 @@ class SignupController extends BaseController
                 $speaker->photo_path = $sanitized_data['speaker_photo'];
                 $speaker->transportation = (int) $sanitized_data['transportation'];
                 $speaker->hotel = (int) $sanitized_data['hotel'];
+                $speaker->sponsor = (int) $sanitized_data['sponsor'];
+                $speaker->speaker_directory = (int) $sanitized_data['speaker_directory'];
+                $speaker->request_mentor = (int) $sanitized_data['request_mentor'];
+                $speaker->max_presentations = (int) $sanitized_data['max_presentations'];
                 $mapper->save($speaker);
 
                 // Set Success Flash Message
