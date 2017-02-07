@@ -33,10 +33,10 @@ class User extends Entity
             'info' => ['type' => 'text'],
             'bio' => ['type' => 'text'],
             'photo_path' => ['type' => 'string', 'length' => 255],
-			'max_presentations' => ['type' => 'smallint', 'value' => 2],
-			'speaker_directory' => ['type' => 'smallint', 'value' => 1],
-			'sponsor' => ['type' => 'smallint', 'value' => 1],
-			'request_mentor' => ['type' => 'smallint', 'value' => 1],
+            'max_presentations' => ['type' => 'smallint', 'value' => 2],
+            'speaker_directory' => ['type' => 'smallint', 'value' => 1],
+            'sponsor' => ['type' => 'smallint', 'value' => 1],
+            'request_mentor' => ['type' => 'smallint', 'value' => 1],
         ];
     }
 

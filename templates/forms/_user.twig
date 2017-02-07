@@ -62,19 +62,20 @@
     <div class="form-group">
         <label for="form-transportation" class="col-sm-2 control-label">Airfare?</label>
         <div class="col-sm-10 checkbox">
-            <input id="form-transportation" name="transportation" type="checkbox" value="1" class="checkbox" {% if transportation == '1' %}checked{% endif %} /> I need help with flight cost.
+            <input id="form-transportation" name="transportation" type="checkbox" value="1" class="checkbox" {% if transportation == '1' %}checked{% endif %} /> I need OpenWest to pay my flight cost.
+            <p class="help-block">For out-of-town speakers, your chances of being selected are greater if your company pays for your travel costs. We have a limited budget for bringing in out-of-town speakers.</p>
         </div>
     </div>
     <div class="form-group">
         <label for="form-hotel" class="col-sm-2 control-label">Hotel?</label>
         <div class="col-sm-10 checkbox">
-            <input id="form-hotel" name="hotel" type="checkbox" value="1" class="checkbox" {% if hotel == '1' %}checked{% endif %} /> I need help with hotel cost.
+            <input id="form-hotel" name="hotel" type="checkbox" value="1" class="checkbox" {% if hotel == '1' %}checked{% endif %} /> I need OpenWest to pay my hotel cost.
         </div>
     </div>
     <div class="form-group">
         <label for="form-sponsor" class="col-sm-2 control-label">Company Sponsorship</label>
         <div class="col-sm-10 checkbox">
-            <input id="form-sponsor" name="sponsor" type="checkbox" value="1" class="checkbox" {% if sponsor == '1' %}checked{% endif %} /> Is your company sponsoring, or would they like to?
+            <input id="form-sponsor" name="sponsor" type="checkbox" value="1" class="checkbox" {% if sponsor == '1' %}checked{% endif %} /> Is your company sponsoring, or would they be interested in sponsoring?
         </div>
     </div>
     <div class="form-group">

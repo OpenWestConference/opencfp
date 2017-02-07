@@ -25,8 +25,8 @@
         <label for="form-talk-type" class="col-sm-2 control-label">Talk Type</label>
         <div class="col-sm-10">
             <select id="form-talk-type" name="type" class="form-control">
-                <option value="regular" {% if type == 'regular' %}selected {% endif %}>Regular (50-min)</option>
-                <option value="focus" {% if type == 'focus' %}selected {% endif %}>Focus Group (50-min)</option>
+                <option value="regular" {% if type == 'regular' %}selected {% endif %}>Regular (45-min)</option>
+                <option value="focus" {% if type == 'focus' %}selected {% endif %}>Focus Group (45-min)</option>
                 <option value="tutorial" {% if type == 'tutorial' %}selected {% endif %}>Tutorial (3-hr)</option>
             </select>
         </div>
@@ -40,18 +40,20 @@
                 <option value="CMS" {% if category == "CMS" %}selected {% endif %}>CMS</option>
                 <option value="Community" {% if category == "Community" %}selected {% endif %}>Community</option>
                 <option value="Data" {% if category == "Data" %}selected {% endif %}>Data</option>
-                <option value="GeekLife" {% if category == "GeekLife" %}selected {% endif %}>Geek Life</option>
+                <option value="Geek Life" {% if category == "Geek Life" %}selected {% endif %}>Geek Life</option>
                 <option value="GoLang" {% if category == "GoLang" %}selected {% endif %}>Go Language</option>
                 <option value="Hardware" {% if category == "Hardware" %}selected {% endif %}>Hardware</option>
                 <option value="Java" {% if category == "Java" %}selected {% endif %}>Java</option>
-                <option value="Javascript" {% if category == "Javascript" %}selected {% endif %}>Javascript</option>
+                <option value="JS (Client)" {% if category == "JS (Client)" %}selected {% endif %}>JS (Client)</option>
+                <option value="JS (Server)" {% if category == "JS (Server)" %}selected {% endif %}>JS (Server)</option>
                 <option value="Mobile" {% if category == "Mobile" %}selected {% endif %}>Mobile</option>
+                <option value=".NET" {% if category == ".NET" %}selected {% endif %}>.NET</option>
                 <option value="Ops" {% if category == "Ops" %}selected {% endif %}>Ops</option>
-                <option value="OtherLang" {% if category == "OtherLang" %}selected {% endif %}>Other Languages</option>
+                <option value="Other Languages" {% if category == "Other Languages" %}selected {% endif %}>Other Languages</option>
                 <option value="Perl" {% if category == "Perl" %}selected {% endif %}>Perl</option>
                 <option value="PHP" {% if category == "PHP" %}selected {% endif %}>PHP</option>
                 <option value="Python" {% if category == "Python" %}selected {% endif %}>Python</option>
-                <option value="QA" {% if category == "QA" %}selected {% endif %}>QA</option>
+                <option value="QA/CI" {% if category == "QA/CI" %}selected {% endif %}>QA/CI</option>
                 <option value="Ruby" {% if category == "Ruby" %}selected {% endif %}>Ruby</option>
                 <option value="Security" {% if category == "Security" %}selected {% endif %}>Security</option>
                 <option value="SEO" {% if category == "SEO" %}selected {% endif %}>SEO</option>

@@ -6,6 +6,7 @@
             <th align='left'><b><a href="talks?sort=category">Category</a></b></th>
             <th align='left'><b><a href="talks">Created On</a></b></th>
             <th align='left'><b>Submitted by</b></th>
+            <th align='left'><b><a href="talks?sort=votes">Votes</a></b></th>
             <th>&nbsp;</th>
         </tr>
     </thead>
@@ -19,8 +20,15 @@
                 {% if false == talk.user %}
                 <td><em>Unknown User</em></td>
                 {% else %}
-                <td><a href="{{ url('admin_speaker_view', { id: talk.user.id }) }}">{{ talk.user.first_name }} {{ talk.user.last_name }}</a></td>
+                <td style="font-size: 80%">
+                    <a href="{{ url('admin_speaker_view', { id: talk.user.id }) }}">
+                        {{ talk.user.first_name }} {{ talk.user.last_name }}
+                        ({{ talk.user.selected }} / {{ talk.user.max_presentations }})
+                    </a>
+                    {{ talk.user.airport }}
+                </td>
                 {% endif %}
+                <td>{{ talk.vote_average|number_format(2) }} ({{ talk.vote_count }})</td>
                 <td>
                     <a href="#" id="talk-favorite-{{ talk.id }}" class="js-talk-favorite" data-id="{{ talk.id }}"><i class="fa fa-star star-favorite{% if talk.favorite == 1 %} star-favorite--selected{% endif %}"></i></a>
                     <a href="#" id="talk-select-{{ talk.id }}" class="js-talk-select" data-id="{{ talk.id }}"><i class="fa fa-check-square check-select{% if talk.selected == 1 %} check-select--selected{% endif %}"></i></a>

@@ -25,6 +25,8 @@ class Talk extends Entity
             'allow_video' => ['type' => 'smallint', 'value' => 0],
             'favorite' => ['type' => 'smallint', 'value' => 0],
             'selected' => ['type' => 'smallint', 'value' => 0],
+            'vote_average' => [ 'type' => 'float' ],
+            'vote_count' => [ 'type' => 'integer' ],
             'created_at' => ['type' => 'datetime', 'value' => new \DateTime()],
             'updated_at' => ['type' => 'datetime', 'value' => new \DateTime()]
         ];

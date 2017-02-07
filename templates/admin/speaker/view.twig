@@ -28,15 +28,26 @@
                 <strong>Request Mentorship:</strong> {% if speaker.request_mentor == '1' %} Yes {% else %} No {% endif %}<br />
                 <strong>Sponsor Opportunity:</strong> {% if speaker.sponsor == '1' %} Yes {% else %} No {% endif %}<br />
                 
-				{% if talks | length > 0 %}
+                {% if talks | length > 0 %}
                     <h3>Talk Submissions</h3>
 
                     {% for talk in talks %}
-                        <a href="{{ url('admin_talk_view', { id: talk.id }) }}">{{ talk.title }}</a><br />
+                        <a href="{{ url('admin_talk_view', { id: talk.id }) }}">
+                            {% if talk.desired == 1 %}*{% endif %}
+                            {{ talk.title }}
+                        </a>
+                        ({{ talk.vote_average | number_format(2) }})
+                        <a href="#" id="talk-favorite-{{ talk.id }}" class="js-talk-favorite" data-id="{{ talk.id }}"><i class="fa fa-star star-favorite{% if talk.favorite == 1 %} star-favorite--selected{% endif %}"></i></a>
+                        <a href="#" id="talk-select-{{ talk.id }}" class="js-talk-select" data-id="{{ talk.id }}"><i class="fa fa-check-square check-select{% if talk.selected == 1 %} check-select--selected{% endif %}"></i></a>
+                        <br />
                     {% endfor %}
                 {% endif %}
             </div>
         </div>
     </div>
 </div>
+{% endblock %}
+{% block scripts %}
+    {{ parent() }}
+    <script src="/assets/js/admin/talk.js"></script>
 {% endblock %}

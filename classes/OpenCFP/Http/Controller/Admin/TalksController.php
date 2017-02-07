@@ -21,15 +21,16 @@ class TalksController extends BaseController
         if ($req->get('sort') !== null) {
             switch ($req->get('sort')) {
                 case "title": $sort = [ "title" => "ASC" ]; break;
-                case "category": $sort = [ "category" => "ASC", "title" => "ASC" ]; break;
+                case "category": $sort = [ "category" => "ASC", "vote_average" => "DESC" ]; break;
                 case "type": $sort = [ "type" => "ASC", "category" => "ASC", "title" => "ASC" ]; break;
+                case "votes": $sort = [ "category" => "ASC", "vote_average" => "DESC", "title" => "ASC" ]; break;
             }
         }
 
 
         $admin_user_id = $this->app['sentry']->getUser()->getId();
         $mapper = $this->app['spot']->mapper('OpenCFP\Domain\Entity\Talk');
-        $pager_formatted_talks = $mapper->getAllPagerFormatted($admin_user_id, $sort);
+        $pager_formatted_talks = $mapper->getAllPagerFormatted($admin_user_id, $sort, $this->app);
 
         // Set up our page stuff
         $adapter = new \Pagerfanta\Adapter\ArrayAdapter($pager_formatted_talks);

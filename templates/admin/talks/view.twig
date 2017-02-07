@@ -16,7 +16,8 @@
                 <strong>Level:</strong> {% if talk.level is defined %}{{ talk.level }}{% endif %}<br />
                 <strong>Category:</strong> {% if talk.category is defined %}{{ talk.category }}{% endif %}<br />
                 <strong>Desired:</strong> {% if talk.desired is defined %}{{ talk.desired ? 'Yes' : 'No' }}{% endif %}<br />
-                <strong>Sponsor:</strong> {% if talk.sponsor is defined %}{{ talk.sponsor ? 'Yes' : 'No' }}{% endif %}<br />
+                <strong>Favorite:</strong> <a href="#" id="talk-favorite-{{ talk.id }}" class="js-talk-favorite" data-id="{{ talk.id }}"><i class="fa fa-star star-favorite{% if talk.favorite == 1 %} star-favorite--selected{% endif %}"></i></a><br />
+                <strong>Selected:</strong> <a href="#" id="talk-select-{{ talk.id }}" class="js-talk-select" data-id="{{ talk.id }}"><i class="fa fa-check-square check-select{% if talk.selected == 1 %} check-select--selected{% endif %}"></i></a><br />
 
             </p>
 
@@ -30,4 +31,8 @@
             <p><a href="{{ url('admin_talks') }}" class="btn btn-primary">Return to viewing all talks</a></p>
         </div>
     </div>
+{% endblock %}
+{% block scripts %}
+    {{ parent() }}
+    <script src="/assets/js/admin/talk.js"></script>
 {% endblock %}
