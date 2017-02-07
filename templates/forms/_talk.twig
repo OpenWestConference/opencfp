@@ -25,16 +25,24 @@
         <label for="form-talk-type" class="col-sm-2 control-label">Talk Type</label>
         <div class="col-sm-10">
             <select id="form-talk-type" name="type" class="form-control">
+<<<<<<< HEAD
                 <option value="regular" {% if type == 'regular' %}selected {% endif %}>Regular (45-min)</option>
                 <option value="focus" {% if type == 'focus' %}selected {% endif %}>Focus Group (45-min)</option>
                 <option value="tutorial" {% if type == 'tutorial' %}selected {% endif %}>Tutorial (3-hr)</option>
+=======
+                {% for typeKey, displayType in talkTypes %}
+                    <option value="{{ typeKey }}" {% if type == typeKey %}selected {% endif %}>{{ displayType }}</option>
+                {% endfor %}
+>>>>>>> master
             </select>
         </div>
     </div>
+
     <div class="form-group">
         <label for="form-talk-category" class="col-sm-2 control-label">Talk Category</label>
         <div class="col-sm-10">
             <select id="form-talk-category" name="category" class="form-control">
+<<<<<<< HEAD
                 <option value="Architecture" {% if category == "Architecture" %}selected {% endif %}>Architecture</option>
                 <option value="Business" {% if category == "Business" %}selected {% endif %}>Business</option>
                 <option value="CMS" {% if category == "CMS" %}selected {% endif %}>CMS</option>
@@ -60,6 +68,11 @@
                 <option value="Tools" {% if category == "Tools" %}selected {% endif %}>Tools</option>
                 <option value="Web" {% if category == "Web" %}selected {% endif %}>Web</option>
                 <option value="UI/UX" {% if category == "UI/UX" %}selected {% endif %}>UI / UX</option>
+=======
+                {% for categoryKey, displayCategory in talkCategories %}
+                    <option value="{{ categoryKey }}" {% if category == categoryKey %}selected {% endif %}>{{ displayCategory }}</option>
+                {% endfor %}
+>>>>>>> master
             </select>
         </div>
     </div>
@@ -67,10 +80,22 @@
         <label for="form-talk-level" class="col-sm-2 control-label">Talk Level</label>
         <div class="col-sm-10">
             <select id="form-talk-level" name="level" class="form-control">
+<<<<<<< HEAD
                 <option value="entry" {% if level == 'entry' %}selected {% endif %}>Beginner</option>
                 <option value="mid" {% if level == 'mid' %}selected {% endif %}>Intermediate</option>
                 <option value="advanced" {% if level == 'advanced' %}selected {% endif %}>Advanced</option>
+=======
+                {% for levelKey, displayLevel in talkLevels %}
+                    <option value="{{ levelKey }}" {% if level == levelKey %}selected {% endif %}>{{ displayLevel }}</option>
+                {% endfor %}
+>>>>>>> master
             </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="form-talk-level" class="col-sm-2 control-label">Talk Tags</label>
+        <div class="col-sm-10">
+            <input id="form-talk-tags" type="text" name="tags" class="form-control" placeholder="Talk Tags" value="{{ tags|join(', ') }}">
         </div>
     </div>
     <div class="form-group">

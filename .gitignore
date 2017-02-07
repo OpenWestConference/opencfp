@@ -9,14 +9,16 @@
 .DS_Store
 opencfp.iml
 .buildpath
+.php_cs.cache
 .project
 .settings
 composer.phar
-composer.lock
 deployment.properties
 deployment.xml
 /scripts
 /web/uploads/*
 !/web/uploads/dummyphoto.jpg
+/web/.htaccess
 phinx.yml
 /web/choose.php
+/phpunit.xml

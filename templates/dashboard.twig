@@ -38,14 +38,21 @@ function deleteTalk(tid) {
         </div>
         <div class="col-md-9">
             <br />
-            <strong>Name:</strong> {{ profile.name }} <a href="https://twitter.com/@{{ profile.twitter }}" title="{{ profile.name }} on Twitter">@{{ profile.twitter }}</a><br />
+            <strong>Name:</strong> {{ profile.name }}
+            {% if profile.twitter %}
+                <a href="https://twitter.com/@{{ profile.twitter }}" title="{{ profile.name }} on Twitter">@{{ profile.twitter }}</a>
+            {% endif %}<br />
             <strong>Company:</strong> {{ profile.company }}<br />
+            {% if site.online_conference == false %}
             <strong>Airport:</strong> {{ profile.airport }}<br />
+            {% endif %}
             <strong>Bio:</strong> {{ profile.bio|striptags|markdown }}<br /><br />
             <strong>Other Info:</strong> {{ profile.info|striptags|markdown }}<br /><br />
 
+            {% if site.online_conference == false %}
             <strong>Need Transportation:</strong> {% if profile.transportation == '1' %} Yes {% else %} No {% endif %}<br />
             <strong>Need Hotel:</strong> {% if profile.hotel == '1' %} Yes {% else %} No {% endif %}
+            {% endif %}
         </div>
     </div>
 
@@ -65,11 +72,15 @@ function deleteTalk(tid) {
         <tbody>
         {% for talk in profile.talks %}
             <tr id="talk-{{ talk.id }}">
-                <td><b>{{ talk.title|raw }}</b></td>
-                <td>{{ talk.type }}</td>
-                <td>{{ talk.category }}</td>
+                <td><b><a href="{{ url('talk_view', { id: talk.id }) }}">{{ talk.title|raw }}</a></b></td>
+                <td>{{ talkHelper.getTypeDisplayName(talk.type) }}</td>
+                <td>{{talkHelper.getCategoryDisplayName(talk.category) }}</td>
                 <td>{{ talk.created_at|date("F jS \\a\\t g:ia T") }}</td>
-                <td><a href="{{ url('talk_edit', { id: talk.id }) }}">Edit</a></td>
+                {% if cfp_open %}
+                    <td><a href="{{ url('talk_edit', { id: talk.id }) }}">Edit</a></td>
+                {% else %}
+                    <td><a href="{{ url('talk_view', { id: talk.id }) }}">View</a></td>
+                {% endif %}
                 <td><a href="#" onClick="deleteTalk('{{ talk.id }}');return false;">Delete</a></td>
             </tr>
         {% endfor %}

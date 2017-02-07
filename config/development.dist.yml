@@ -3,21 +3,33 @@ application:
   url: http://localhost
   email: contact@openconf.com
   eventurl: http://localhost
+  event_location: Miami, FL
   enddate: Oct. 14th, 2016
+  show_submission_count: false
   airport: MIA
   arrival: 2014-10-26
   departure: 2014-10-31
-  secure_ssl: true
+  secure_ssl: false
+  online_conference: false
+  date_format: d/m/Y
+  date_timezone: "UTC"
+  coc_link:
+
+api:
+  enabled: true
 
 cache:
   enabled: false
 
 database:
   host: 127.0.0.1
-  database: cfp_travis
-  dsn: mysql:dbname=cfp_travis;host=127.0.0.1
+  database: cfp
+  dsn: mysql:dbname=cfp;host=127.0.0.1
   user: root
   password: ~
+
+log:
+  level: debug
 
 mail:
   host: ~
@@ -26,3 +38,25 @@ mail:
   password: ~
   encryption: ~
   auth_mode: ~
+
+talk:
+  categories:
+    api: APIs (REST, SOAP, etc.)
+    continuousdelivery: Continuous Delivery
+    database: Database
+    development: Development
+    devops: Devops
+    framework: Framework
+    ibmi: IBMi
+    javascript: JavaScript
+    security: Security
+    testing: Testing
+    uiux: UI/UX
+    other: Other
+  levels:
+    entry: Entry level
+    mid: Mid-level
+    advanced: Advanced
+  types:
+    regular: Regular (50 mins)
+    tutorial: Tutorial (3 hrs)

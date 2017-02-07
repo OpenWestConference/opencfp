@@ -1,31 +1,47 @@
 language: php
 
-php:
-  - 5.6
-  - 5.5
-  - 5.4
+sudo: false
+
+matrix:
+  fast_finish: true
+  include:
+    - php: 7.1
+    - php: 7.0
+      env: WITH_COVERAGE=true
+    - php: 5.6
+      env: WITH_CS=true
+    - php: 5.5
+
+env:
+  global:
+    - TRAVIS_DB=cfp_test
+    - CODECLIMATE_REPO_TOKEN=9deb249b01a414d979959cfd05a4c351b19a5959858653b20276454d4189edc3
 
 # cache composer downloads so installing is quicker
 cache:
   directories:
-    - $HOME/.composer
+    - $HOME/.composer/cache
+    - $HOME/.php-cs-fixer
 
-addons:
-  code_climate:
-    repo_token: 3df25819765c78c9f1eaa02232d42362033703ef645e54703dff3ab4c636aae5
+before_install:
+  - if [[ "$TRAVIS_PULL_REQUEST" == "false" && "$TRAVIS_BRANCH" == "master" ]]; then COLLECT_COVERAGE=true; else COLLECT_COVERAGE=false; fi
+  - if [[ "$COLLECT_COVERAGE" == "false" ]]; then phpenv config-rm xdebug.ini; fi
+  - if [[ "$WITH_CS" == "true" ]]; then mkdir -p "$HOME/.php-cs-fixer"; fi
+  - composer self-update
+  - composer validate --no-check-publish
+
+install:
+  - composer install
 
 before_script:
-  - sh tools/travis/setup-webserver.sh
   - sh tools/travis/setup-mail.sh
+  - mysql -e "CREATE DATABASE $TRAVIS_DB" -uroot
   - cp phinx.yml.dist phinx.yml
-  - composer self-update
-  - composer install
-  - phantomjs --webdriver 4444 &
-  - sleep 3
+  - vendor/bin/phinx migrate -e testing
 
 script:
-  - sh tools/travis/build.sh
+  - if [[ "$COLLECT_COVERAGE" == "true" ]]; then vendor/bin/phpunit --coverage-clover build/logs/clover.xml; else vendor/bin/phpunit; fi
+  - if [[ "$WITH_CS" == "true" ]]; then vendor/bin/php-cs-fixer fix --verbose --diff --dry-run; fi
 
-after_script:
-  - vendor/bin/test-reporter --stdout > codeclimate.json
-  - "curl -X POST -d @codeclimate.json -H 'Content-Type: application/json' -H 'User-Agent: Code Climate (PHP Test Reporter v0.1.1)' https://codeclimate.com/test_reports"
+after_success:
+  - if [[ "$COLLECT_COVERAGE" == "true" ]]; then vendor/bin/test-reporter --coverage-report build/logs/clover.xml; fi
