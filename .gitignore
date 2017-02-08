@@ -22,3 +22,4 @@ deployment.xml
 phinx.yml
 /web/choose.php
 /phpunit.xml
+/compose.lock

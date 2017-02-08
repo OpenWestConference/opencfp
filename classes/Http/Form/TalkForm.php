@@ -18,7 +18,7 @@ class TalkForm extends Form
         'slides',
         'other',
         'allow_video',
-        'user_id'
+        'user_id',
         'sponsor',
         'user_id',
         'tags',
@@ -36,7 +36,6 @@ class TalkForm extends Form
 
         parent::__construct($data, $purifier, $options);
     }
->>>>>>> master:classes/Http/Form/TalkForm.php
 
     /**
      * Santize all our fields that were submitted
@@ -68,7 +67,6 @@ class TalkForm extends Form
             $this->validateSlides() &&
             $this->validateOther() &&
             $this->validateAllowVideo() &&
-            $this->validateSponsor() &&
             $this->validateTags()
         );
     }
